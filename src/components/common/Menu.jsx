@@ -8,7 +8,7 @@ const Menu = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link className="buttonMenu rounded text-white" href="#home">Ver Recetas</Nav.Link>
+            <Nav.Link className="buttonMenu rounded text-white text-center" href="#home">Ver Recetas</Nav.Link>
             <Nav.Link href="#link"  className="ms-3"><i className="bi bi-arrow-bar-right"></i> Iniciar Sesión</Nav.Link>
           </Nav>
         </Navbar.Collapse>
