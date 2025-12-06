@@ -2,7 +2,7 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 
 const Menu = () => {
   return (
-    <Navbar expand="lg" bg="light" data-bs-theme="light">
+    <Navbar expand="lg"  data-bs-theme="light">
       <Container>
         <Navbar.Brand href="#home"><i className="bi bi-fork-knife fs-3 colorEstilo"></i> Mi blog de recetas</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
