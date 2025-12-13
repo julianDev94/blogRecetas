@@ -1,7 +1,18 @@
 
+#root{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.seccionPricipal{
+  flex-grow: 1;
+}
+
 .seccionPricipal{
 
   background: #f9fafb;
+
 }
 
 .colorEstilo{
