@@ -1,8 +1,9 @@
 import { Card } from "react-bootstrap";
+
 const CardReceta = () => {
   return (
     <Card className="cardTransicion">
-      <Card.Img variant="top" src="holder.js/100px160" />
+      <Card.Img variant="top" src="https://images.pexels.com/photos/691114/pexels-photo-691114.jpeg" />
       <Card.Body>
         <Card.Title>Nombre receta</Card.Title>
         <Card.Text>Descripcion corta</Card.Text>
