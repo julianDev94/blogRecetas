@@ -3,13 +3,15 @@ import '../node_modules/bootstrap-icons/font/bootstrap-icons.min.css'
 import Menu from './components/common/Menu'
 import Footer from './components/common/Footer'
 import Login from './components/pages/Login'
+import Inicio from './components/pages/Inicio'
 import './App.css'
 function App() {
 
   return (
     <>
       <Menu></Menu>
-      <Login></Login>
+      <Inicio></Inicio>
+      {/* <Login></Login> */}
       <Footer></Footer>
     </>
   )

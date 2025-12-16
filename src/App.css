@@ -1,7 +1,18 @@
 
+#root{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.seccionPricipal{
+  flex-grow: 1;
+}
+
 .seccionPricipal{
 
   background: #f9fafb;
+
 }
 
 .colorEstilo{
@@ -11,4 +22,17 @@
 .buttonMenu{
 
   background: #ea580c;
+}
+
+.cardTransicion{
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: 
+  transform 0.3s ease,
+  box-shadow 0.3s ease;
+  border: 0;
+}
+
+.cardTransicion:hover{
+  transform: translateY(-1px);
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.25);
 }

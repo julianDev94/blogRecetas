@@ -3,9 +3,9 @@ import { Container, Button, Form, Card } from "react-bootstrap";
 const Login = () => {
   return (
     <section className="seccionPricipal">
-      <Container className="d-flex justify-content-center ">
+      <Container className="d-flex justify-content-center my-5 ">
         <Card
-          className="shadow-md p-4
+          className="shadow p-4
          col-sm-10 col-lg-5 col-md-8 border border-0"
         >
           <Card.Body>
