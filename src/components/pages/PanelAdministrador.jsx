@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-
+import ItemReceta from "./recetas/ItemReceta";
 const PanelAdministrador = () => {
   return (
     <section className="seccionPricipal">
@@ -22,18 +22,7 @@ const PanelAdministrador = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>
-                  <div className="d-flex">
-                    <a href="" ><i className="bi bi-pencil-square text-primary fs-4 me-3"></i></a>
-                    <a href=""><i className="bi bi-trash3 text-danger fs-4"></i></a>
-                  </div>
-                </td>
-              </tr>
+              <ItemReceta />
             </tbody>
           </table>
         </article>
