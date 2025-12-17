@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 const FormularioReceta = () => {
   const [ingredientes, setIngredientes] = useState([""]);
-  const [pasos, setPasos] = useState([]);
+  const [pasos, setPasos] = useState([""]);
 
   const agregarIngrediente = () => {
     setIngredientes([...ingredientes, ""]);
@@ -11,6 +11,15 @@ const FormularioReceta = () => {
   const eliminarIngrediente =(posicion)=>{
     const ingredientesNuevos = ingredientes.filter((_, i)=> i !== posicion);
     setIngredientes(ingredientesNuevos);
+  }
+
+  const agregarPasos = () =>{
+    setPasos([...pasos, ""]);
+  }
+
+  const eliminarPaso = (posicion)=>{
+    const pasosNuevos = pasos.filter((_,pos)=>pos !== posicion)
+    setPasos(pasosNuevos);
   }
 
   return (
@@ -79,6 +88,31 @@ const FormularioReceta = () => {
                   <i className="bi bi-x-lg"></i>
                 </Button>)
 
+                }
+                
+              </div>
+            </div>)
+            }
+          </Form.Group>
+           <Form.Group controlId="formularioPasos" className="mb-3">
+            <div className="d-flex mb-2">
+              <Form.Label className="me-auto">Pasos para receta *</Form.Label>
+              <div>
+                <Button type="button" onClick={agregarPasos}>
+                  + Pasos
+                </Button>
+              </div>
+            </div>
+            {
+              pasos.map((_, posicion)=>
+              <div className="d-flex mb-3" key={posicion}>
+                <p className="btn btn-danger me-3">{posicion+1}</p>
+              <Form.Control type="text" placeholder={`Paso ${posicion+1}`} />
+              <div className="ms-3">
+                {
+                  pasos.length > 1 && (<Button variant="danger" onClick={()=>eliminarPaso(posicion)}>
+                  <i className="bi bi-x-lg"></i>
+                </Button>)
                 }
                 
               </div>
