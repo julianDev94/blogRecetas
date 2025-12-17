@@ -1,0 +1,94 @@
+import { useState } from "react";
+import { Container, Form, Row, Col, Button } from "react-bootstrap";
+const FormularioReceta = () => {
+  const [ingredientes, setIngredientes] = useState([""]);
+  const [pasos, setPasos] = useState([]);
+
+  const agregarIngrediente = () => {
+    setIngredientes([...ingredientes, ""]);
+  };
+
+  const eliminarIngrediente =(posicion)=>{
+    const ingredientesNuevos = ingredientes.filter((_, i)=> i !== posicion);
+    setIngredientes(ingredientesNuevos);
+  }
+
+  return (
+    <section className="seccionPricipal">
+      <Container className="mt-4">
+        <h5>Alta de recetas</h5>
+        <Form className="bg-white p-3 rounded shadow-lg">
+          <Row className="mb-3">
+            <Form.Group as={Col} controlId="formularioTitulo">
+              <Form.Label>Título *</Form.Label>
+              <Form.Control type="text" placeholder="Nombre de la receta" />
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formularioCategoria">
+              <Form.Label>Categoria *</Form.Label>
+              <Form.Select aria-label="Default select example">
+                <option>Seleccione la categoria</option>
+                <option value="Principal">Principal</option>
+                <option value="Postre">Postre</option>
+                <option value="Ensalada">Ensalada</option>
+              </Form.Select>
+            </Form.Group>
+          </Row>
+          <Form.Group className="mb-3" controlId="textAreaDescripcion">
+            <Form.Label>Descripcion breve *</Form.Label>
+            <Form.Control as="textarea" rows={3} />
+          </Form.Group>
+          <Row className="mb-3">
+            <Form.Group as={Col} controlId="formularioTiempoPrep">
+              <Form.Label>Tiempo de Prep. Minutos*</Form.Label>
+              <Form.Control type="number" placeholder="Por ejemplo: 20" />
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formularioTiempoCoccion">
+              <Form.Label>Tiempo Cocción. Minutos*</Form.Label>
+              <Form.Control type="number" placeholder="Por ejemplo: 20" />
+            </Form.Group>
+            <Form.Group as={Col} controlId="formularioPorciones">
+              <Form.Label>Porciones *</Form.Label>
+              <Form.Control type="number" placeholder="Por ejemplo: 5" />
+            </Form.Group>
+          </Row>
+          <Form.Group controlId="formularioURLImagen" className="mb-3">
+            <Form.Label>URL Imagen *</Form.Label>
+            <Form.Control
+              type="url"
+              placeholder="Por ejemplo: https://imagen.com"
+            />
+          </Form.Group>
+          <Form.Group controlId="formularioIngredientes">
+            <div className="d-flex mb-2">
+              <Form.Label className="me-auto">Ingredientes *</Form.Label>
+              <div>
+                <Button type="button" onClick={agregarIngrediente}>
+                  + Ingredientes
+                </Button>
+              </div>
+            </div>
+            {
+              ingredientes.map((_, posicion)=>
+              <div className="d-flex mb-3" key={posicion}>
+              <Form.Control type="text" placeholder={`Ingrediente ${posicion+1}`} />
+              <div className="ms-3">
+                {
+                  ingredientes.length > 1 && (<Button variant="danger" onClick={()=>eliminarIngrediente(posicion)}>
+                  <i className="bi bi-x-lg"></i>
+                </Button>)
+
+                }
+                
+              </div>
+            </div>)
+            }
+          </Form.Group>
+        </Form>
+      </Container>
+    </section>
+  );
+};
+
+export default FormularioReceta;

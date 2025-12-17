@@ -5,6 +5,7 @@ import Footer from './components/common/Footer'
 import Login from './components/pages/Login'
 import Inicio from './components/pages/Inicio'
 import PanelAdministrador from './components/pages/PanelAdministrador'
+import FormularioReceta from './components/pages/recetas/FormularioReceta'
 import './App.css'
 function App() {
 
@@ -13,7 +14,8 @@ function App() {
       <Menu></Menu>
       {/* <Inicio></Inicio> */}
       {/* <Login></Login> */}
-      <PanelAdministrador></PanelAdministrador>
+      {/* <PanelAdministrador></PanelAdministrador> */}
+      <FormularioReceta></FormularioReceta>
       <Footer></Footer>
     </>
   )
