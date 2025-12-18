@@ -52,3 +52,7 @@
   width: 100px;
   height: 100px;
 }
+
+textarea{
+  resize: none;
+}
