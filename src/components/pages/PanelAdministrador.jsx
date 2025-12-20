@@ -1,14 +1,15 @@
 import { Container } from "react-bootstrap";
 import ItemReceta from "./recetas/ItemReceta";
+import { Link } from "react-router";
 const PanelAdministrador = () => {
   return (
     <section className="seccionPricipal">
       <Container className="mt-4">
         <div className="d-flex justify-content-between">
           <h2>Administrar recetas</h2>
-          <a href="" className=" btn btn-primary text-white">
+          <Link to={"/administrador/crear"} className=" btn btn-primary text-white">
             + Nueva Receta
-          </a>
+          </Link>
         </div>
         <article className="my-4 table-responsive">
           <table className="table">

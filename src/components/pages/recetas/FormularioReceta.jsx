@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router";
 
 const FormularioReceta = () => {
   const {
@@ -290,9 +291,9 @@ const FormularioReceta = () => {
             <Button type="submit" variant="danger" size="lg">
               Crear receta
             </Button>
-            <Button type="button" variant="secondary" size="lg">
+            <Link to={"/administrador"} className="btn btn-secondary btn-lg" >
               Cancelar
-            </Button>
+            </Link>
           </div>
         </Form>
       </Container>

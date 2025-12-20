@@ -1,4 +1,5 @@
-
+import { Button } from "react-bootstrap";
+import { Link } from "react-router";
 const ItemReceta = () => {
   return (
     <tr>
@@ -14,10 +15,10 @@ const ItemReceta = () => {
       <td>@mdo</td>
       <td>
         <div className="d-flex">
-          <a href="">
+          <Link to={"/administrador/formulario"} href="">
             <i className="bi bi-pencil-square text-primary fs-4 me-3"></i>
-          </a>
-          <a href="">
+          </Link>
+          <a className="btn" type="button"> 
             <i className="bi bi-trash3 text-danger fs-4"></i>
           </a>
         </div>
