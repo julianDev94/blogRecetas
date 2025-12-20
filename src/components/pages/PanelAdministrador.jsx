@@ -7,7 +7,7 @@ const PanelAdministrador = () => {
       <Container className="mt-4">
         <div className="d-flex justify-content-between">
           <h2>Administrar recetas</h2>
-          <Link to={"/administrador/formulario"} className=" btn btn-primary text-white">
+          <Link to={"/administrador/crear"} className=" btn btn-primary text-white">
             + Nueva Receta
           </Link>
         </div>

@@ -8,6 +8,8 @@ import PanelAdministrador from "./components/pages/PanelAdministrador";
 import FormularioReceta from "./components/pages/recetas/FormularioReceta";
 import { BrowserRouter, Routes, Route } from "react-router";
 import "./App.css";
+import RutasAdmin from "./components/routes/RutasAdmin";
+import RutasProtegidas from "./components/routes/RutasProtegidas";
 function App() {
   return (
     <>
@@ -15,16 +17,15 @@ function App() {
         <Menu></Menu>
 
         <Routes>
-          <Route path="/" element={<Inicio></Inicio>} />
-          <Route path="/login" element={<Login></Login>} />
+          <Route path="/" exac element={<Inicio></Inicio>} />
+          <Route path="/login" exac element={<Login></Login>} />
           <Route
-            path="/administrador"
-            element={<PanelAdministrador></PanelAdministrador>}
+            path="/administrador/*"
+            exac
+            element={<RutasProtegidas>
+              <RutasAdmin></RutasAdmin>
+            </RutasProtegidas>}
           />
-          <Route
-            path="/administrador/formulario"
-            element={<FormularioReceta></FormularioReceta>}
-          ></Route>
         </Routes>
         <Footer></Footer>
       </BrowserRouter>
