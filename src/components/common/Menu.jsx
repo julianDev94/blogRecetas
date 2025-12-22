@@ -1,10 +1,14 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 
 const Menu = ({ usuarioAdminLogueado, setUsuarioAdminLogueado }) => {
+
+  const navegacionInicio = useNavigate()
+
   const cerrarSesion = () => {
     sessionStorage.removeItem("usuarioAdmin");
     setUsuarioAdminLogueado("");
+    navegacionInicio("/");
   };
   return (
     <Navbar expand="lg" data-bs-theme="light">
