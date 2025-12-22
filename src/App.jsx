@@ -8,11 +8,16 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import "./App.css";
 import RutasAdmin from "./components/routes/RutasAdmin";
 import RutasProtegidas from "./components/routes/RutasProtegidas";
+import { useState } from "react";
 function App() {
+  const usuarioAdmin = JSON.parse(sessionStorage.getItem("usuarioAdmin")) || "";
+  const [usuarioAdminLogueado, setUsuarioAdminLogueado] =
+    useState(usuarioAdmin);
+
   return (
     <>
       <BrowserRouter>
-        <Menu></Menu>
+        <Menu usuarioAdminLogueado={usuarioAdminLogueado} setUsuarioAdminLogueado={setUsuarioAdminLogueado} />
 
         <Routes>
           <Route path="/" exac element={<Inicio></Inicio>} />
@@ -20,9 +25,11 @@ function App() {
           <Route
             path="/administrador/*"
             exac
-            element={<RutasProtegidas>
-              <RutasAdmin></RutasAdmin>
-            </RutasProtegidas>}
+            element={
+              <RutasProtegidas>
+                <RutasAdmin></RutasAdmin>
+              </RutasProtegidas>
+            }
           />
         </Routes>
         <Footer></Footer>
