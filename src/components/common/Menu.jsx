@@ -24,7 +24,7 @@ const Menu = () => {
               end
               className="buttonMenu nav-link rounded text-white text-center ms-3"
             >
-              Panel de Administrador
+              Administrar
             </NavLink>
             <NavLink to="/login" end className="ms-3 nav-link">
               <i className="bi bi-arrow-bar-right"></i> Iniciar Sesión

@@ -4,8 +4,6 @@ import Menu from "./components/common/Menu";
 import Footer from "./components/common/Footer";
 import Login from "./components/pages/Login";
 import Inicio from "./components/pages/Inicio";
-import PanelAdministrador from "./components/pages/PanelAdministrador";
-import FormularioReceta from "./components/pages/recetas/FormularioReceta";
 import { BrowserRouter, Routes, Route } from "react-router";
 import "./App.css";
 import RutasAdmin from "./components/routes/RutasAdmin";
