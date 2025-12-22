@@ -7,7 +7,7 @@ const Inicio = () => {
     <section className="seccionPricipal">
       <Container className="my-3">
         <p className="fs-5">Explora Nuestras Recetas</p>
-        <div className="mb-3">
+        <div className="mb-4">
           <span className="px-3 py-2 rounded-pill text-white buttonMenu">
             Categorias
           </span>
