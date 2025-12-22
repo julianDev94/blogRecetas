@@ -1,14 +1,36 @@
 import { Container, Button, Form, Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import { login } from "../../helpers/consultasAPI";
+import Swal from "sweetalert2";
 const Login = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
+  const navegacionAdministrar = useNavigate();
+
   const validacionLogin = (datos) => {
-    console.log(datos);
+    if (login(datos)) {
+      Swal.fire({
+        title: "Usuario logueado exitosamente!",
+        text: `Bienvenido ${datos.usuario}!`,
+        icon: "success",
+      });
+      navegacionAdministrar("/administrador/");
+    }else{
+      Swal.fire({
+        title: "Upss, ha ocurrido un error!",
+        text: `El ${datos.usuario} no esta registrado!`,
+        icon: "error",
+      });
+    }
+
+    reset();
+
   };
 
   return (
@@ -42,7 +64,8 @@ const Login = () => {
                     },
                     maxLength: {
                       value: 8,
-                      message: "El usuario ingresado debe al menos 8 caracteres",
+                      message:
+                        "El usuario ingresado debe al menos 8 caracteres",
                     },
                   })}
                 />

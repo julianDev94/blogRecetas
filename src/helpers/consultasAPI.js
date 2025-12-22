@@ -1,6 +1,6 @@
 const admin = {
   usuario: "admin",
-  contrasenia: "1234admin",
+  contrasenia: "1234Admin",
 };
 
 export const login = (usuarioLogin) => {
