@@ -3,13 +3,11 @@ import { Link, NavLink, useNavigate } from "react-router";
 
 const Menu = ({ usuarioAdminLogueado, setUsuarioAdminLogueado }) => {
 
-  const navegacionInicio = useNavigate()
-
   const cerrarSesion = () => {
     sessionStorage.removeItem("usuarioAdmin");
     setUsuarioAdminLogueado("");
-    navegacionInicio("/");
   };
+
   return (
     <Navbar expand="lg" data-bs-theme="light">
       <Container>
@@ -36,7 +34,7 @@ const Menu = ({ usuarioAdminLogueado, setUsuarioAdminLogueado }) => {
                 >
                   Administrar
                 </NavLink>
-                <Button onClick={cerrarSesion} variant="secondary"> Logout </Button>
+                <NavLink to={"/"} onClick={cerrarSesion} className="nav-link ms-3"> <i className="bi bi-box-arrow-left"></i> Logout </NavLink>
               </>
             ) : (
               <NavLink to="/login" end className="ms-3 nav-link">

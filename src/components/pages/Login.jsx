@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { login } from "../../helpers/consultasAPI";
 import Swal from "sweetalert2";
-const Login = () => {
+const Login = ({setUsuarioAdminLogueado}) => {
   const {
     register,
     handleSubmit,
@@ -21,6 +21,8 @@ const Login = () => {
         icon: "success",
       });
       navegacionAdministrar("/administrador/");
+      setUsuarioAdminLogueado(datos.usuario);
+
     }else{
       Swal.fire({
         title: "Upss, ha ocurrido un error!",
