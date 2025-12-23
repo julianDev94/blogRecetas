@@ -10,9 +10,10 @@ import RutasAdmin from "./components/routes/RutasAdmin";
 import RutasProtegidas from "./components/routes/RutasProtegidas";
 import { useState } from "react";
 function App() {
+
   const usuarioAdmin = JSON.parse(sessionStorage.getItem("usuarioAdmin")) || "";
-  const [usuarioAdminLogueado, setUsuarioAdminLogueado] =
-    useState(usuarioAdmin);
+  console.log(usuarioAdmin);
+  const [usuarioAdminLogueado, setUsuarioAdminLogueado] = useState(usuarioAdmin);
 
   return (
     <>
@@ -21,7 +22,7 @@ function App() {
 
         <Routes>
           <Route path="/" exac element={<Inicio></Inicio>} />
-          <Route path="/login" exac element={<Login></Login>} />
+          <Route path="/login" exac element={<Login setUsuarioAdminLogueado={setUsuarioAdminLogueado}></Login>} />
           <Route
             path="/administrador/*"
             exac
