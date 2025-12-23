@@ -1,0 +1,33 @@
+{
+  "recetas": [
+    {
+      "id": 1,
+      "titulo": "Pasta integral con pollo y vegetales",
+      "categoria": "Principal",
+      "descripcionBreve": "Un plato completo y saludable, ideal para el almuerzo o la cena, con pollo, vegetales salteados y pasta integral.",
+      "tiempoPrep": 15,
+      "tiempoCoccion": 25,
+      "porciones": 4,
+      "ingredientes": [
+        "400 g de pasta integral",
+        "2 pechugas de pollo",
+        "1 zucchini",
+        "1 morrón rojo",
+        "1 cebolla",
+        "2 dientes de ajo",
+        "Aceite de oliva",
+        "Sal y pimienta",
+        "Queso rallado (opcional)"
+      ],
+      "pasos": [
+        "Hervir la pasta en abundante agua con sal según las indicaciones del paquete.",
+        "Cortar el pollo en cubos y salpimentar.",
+        "Saltear el pollo en una sartén con aceite de oliva hasta dorar.",
+        "Agregar la cebolla, el ajo y los vegetales cortados en tiras.",
+        "Cocinar a fuego medio hasta que los vegetales estén tiernos.",
+        "Incorporar la pasta escurrida y mezclar bien.",
+        "Servir caliente con queso rallado si se desea."
+      ]
+    }
+  ]
+}
