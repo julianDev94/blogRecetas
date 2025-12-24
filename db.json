@@ -1,7 +1,7 @@
 {
   "recetas": [
     {
-      "id": 1,
+      "id": "1",
       "titulo": "Pasta integral con pollo y vegetales",
       "categoria": "Principal",
       "descripcionBreve": "Un plato completo y saludable, ideal para el almuerzo o la cena, con pollo, vegetales salteados y pasta integral.",
@@ -27,6 +27,51 @@
         "Cocinar a fuego medio hasta que los vegetales estén tiernos.",
         "Incorporar la pasta escurrida y mezclar bien.",
         "Servir caliente con queso rallado si se desea."
+      ]
+    },
+    {
+      "id": "5e48",
+      "titulo": "Mate cocido",
+      "categoria": "Principal",
+      "descripcionBreve": "Mate cocido rico caliente",
+      "tiempoPrep": "5",
+      "tiempoCoccion": "15",
+      "porciones": "2",
+      "urlImagen": "https://images.pexels.com/photos/904616/pexels-photo-904616.jpeg",
+      "ingredientes": "Saco mate",
+      "pasos": "Hacer hervir agua"
+    },
+    {
+      "id": "4e4d",
+      "titulo": "Mate cocido",
+      "categoria": "Principal",
+      "descripcionBreve": "Mate cocido rico caliente",
+      "tiempoPrep": "5",
+      "tiempoCoccion": "15",
+      "porciones": "2",
+      "urlImagen": "https://images.pexels.com/photos/904616/pexels-photo-904616.jpeg",
+      "ingredientes": "Saco mate",
+      "pasos": "Hacer hervir agua"
+    },
+    {
+      "id": "6857",
+      "titulo": "Napolitana con papas",
+      "categoria": "Principal",
+      "descripcionBreve": "Napolitana con papas fritas",
+      "tiempoPrep": "30",
+      "tiempoCoccion": "20",
+      "porciones": "2",
+      "urlImagen": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg",
+      "ingredientes": [
+        "Carne",
+        "queso",
+        "papas",
+        "Salsa"
+      ],
+      "pasos": [
+        "preparar la milanesa",
+        "fritar la misma",
+        "pelar las papas y luego fritarlas"
       ]
     }
   ]
