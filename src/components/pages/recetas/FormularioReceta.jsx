@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
-
+import { altaReceta } from "../../../helpers/consultasAPI";
+import Swal from "sweetalert2";
 const FormularioReceta = () => {
   const {
     register,
@@ -33,8 +34,28 @@ const FormularioReceta = () => {
     setPasos(pasosNuevos);
   };
 
-  const validacionFormulario = (datos) => {
-    console.log(datos);
+  const validacionFormulario = async (datos) => {
+    try {
+      const respuesta = await altaReceta(datos);
+      console.log(respuesta);
+ 
+      if (respuesta.status === 201) {
+        Swal.fire({
+          title: "Receta creada con exito!",
+          text: `La receta de ${datos.titulo} fue creada`,
+          icon: "success",
+        });
+        reset();
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Ups :(",
+          text: "Ha ocurrido un problema, intentelo nuevamente más tarde!",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -195,8 +216,8 @@ const FormularioReceta = () => {
               })}
             />
             <Form.Text className="text-danger">
-                {errors.urlImagen?.message}
-              </Form.Text>
+              {errors.urlImagen?.message}
+            </Form.Text>
           </Form.Group>
           <Form.Group controlId="formularioIngredientes">
             <div className="d-flex mb-2">
@@ -212,7 +233,7 @@ const FormularioReceta = () => {
                 <Form.Control
                   type="text"
                   placeholder={`Ingrediente ${posicion + 1}`}
-                  {...register("ingredientes", {
+                  {...register(`ingredientes.${posicion}`, {
                     required: "El ingrediente es obligatorio",
                     minLength: {
                       value: 3,
@@ -227,8 +248,8 @@ const FormularioReceta = () => {
                   })}
                 />
                 <Form.Text className="text-danger">
-                {errors.ingredientes?.message}
-              </Form.Text>
+                  {errors.ingredientes?.message}
+                </Form.Text>
                 <div className="ms-3">
                   {ingredientes.length > 1 && (
                     <Button
@@ -257,7 +278,7 @@ const FormularioReceta = () => {
                 <Form.Control
                   type="text"
                   placeholder={`Paso ${posicion + 1}`}
-                  {...register("pasos", {
+                  {...register(`pasos.${posicion}`, {
                     required: "Los pasos son obligatorios",
                     minLength: {
                       value: 3,
@@ -272,8 +293,8 @@ const FormularioReceta = () => {
                   })}
                 />
                 <Form.Text className="text-danger">
-                {errors.pasos?.message}
-              </Form.Text>
+                  {errors.pasos?.message}
+                </Form.Text>
                 <div className="ms-3">
                   {pasos.length > 1 && (
                     <Button
@@ -291,7 +312,7 @@ const FormularioReceta = () => {
             <Button type="submit" variant="danger" size="lg">
               Crear receta
             </Button>
-            <Link to={"/administrador"} className="btn btn-secondary btn-lg" >
+            <Link to={"/administrador"} className="btn btn-secondary btn-lg">
               Cancelar
             </Link>
           </div>
