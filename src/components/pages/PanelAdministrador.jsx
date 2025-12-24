@@ -1,13 +1,33 @@
 import { Container } from "react-bootstrap";
 import ItemReceta from "./recetas/ItemReceta";
 import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import { obtenerRecetas } from "../../helpers/consultasAPI";
 const PanelAdministrador = () => {
+  const [recetas, setRecetas] = useState([]);
+
+  useEffect(() => {
+    obtenerArrayRecetas();
+  }, [recetas]);
+
+  const obtenerArrayRecetas = async () => {
+    try {
+      const recetas = await obtenerRecetas();
+      if (recetas.status === 201) {
+        const datosRecetas = await recetas.json();
+        setRecetas(datosRecetas);
+      }
+    } catch (error) {}
+  };
   return (
     <section className="seccionPricipal">
       <Container className="mt-4">
         <div className="d-flex justify-content-between">
           <h2>Administrar recetas</h2>
-          <Link to={"/administrador/crear"} className=" btn btn-primary text-white">
+          <Link
+            to={"/administrador/crear"}
+            className=" btn btn-primary text-white"
+          >
             + Nueva Receta
           </Link>
         </div>
@@ -23,7 +43,9 @@ const PanelAdministrador = () => {
               </tr>
             </thead>
             <tbody>
-              <ItemReceta />
+              {recetas.map((receta) => (
+                <ItemReceta receta={receta} />
+              ))}
             </tbody>
           </table>
         </article>

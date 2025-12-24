@@ -18,8 +18,7 @@ export const altaReceta = async (receta) => {
 export const obtenerRecetas = async () => {
   try {
     const respuesta = await fetch(apiRecetas);
-    const datosRecetas = await respuesta.json();
-    return  datosRecetas;
+    return respuesta;
   } catch (error) {
     console.log(error);
   }
