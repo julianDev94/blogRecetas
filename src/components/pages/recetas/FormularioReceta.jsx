@@ -37,7 +37,6 @@ const FormularioReceta = () => {
   const validacionFormulario = async (datos) => {
     try {
       const respuesta = await altaReceta(datos);
-      console.log(respuesta);
  
       if (respuesta.status === 201) {
         Swal.fire({
