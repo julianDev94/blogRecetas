@@ -13,11 +13,14 @@ const PanelAdministrador = () => {
   const obtenerArrayRecetas = async () => {
     try {
       const recetas = await obtenerRecetas();
-      if (recetas.status === 201) {
+      console.log(recetas);
+      if (recetas.status === 200) {
         const datosRecetas = await recetas.json();
         setRecetas(datosRecetas);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <section className="seccionPricipal">
@@ -31,7 +34,7 @@ const PanelAdministrador = () => {
             + Nueva Receta
           </Link>
         </div>
-        <article className="my-4 table-responsive">
+        <article className="my-4 table-responsive rounded shadow-lg">
           <table className="table">
             <thead>
               <tr>
