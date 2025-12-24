@@ -1,3 +1,5 @@
+const apiRecetas = import.meta.env.VITE_API_RECETAS;
+
 const admin = {
   usuario: "admin",
   contrasenia: "1234Admin",
