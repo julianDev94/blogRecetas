@@ -6,7 +6,7 @@ const ItemReceta = ({receta}) => {
     <tr>
       <td>
         <div className="d-flex">
-            <img src="https://images.pexels.com/photos/691114/pexels-photo-691114.jpeg" alt="Imagen ilustrativa de la receta" className="img-fila rounded" />
+            <img src={receta.urlImagen} alt="Imagen ilustrativa de la receta" className="img-fila rounded" />
             <div className="ms-3"><p>{receta.titulo}</p>
             <p className="text-body-secondary">{receta.descripcionBreve}</p></div>
         </div>

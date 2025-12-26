@@ -49,6 +49,29 @@
         "fritar la misma",
         "pelar las papas y luego fritarlas"
       ]
+    },
+    {
+      "id": "60d0",
+      "titulo": "Ravioles con salsa",
+      "categoria": "Principal",
+      "descripcionBreve": "Ravioles con salsa ricos",
+      "tiempoPrep": "20",
+      "tiempoCoccion": "30",
+      "porciones": "2",
+      "urlImagen": "https://images.getrecipekit.com/20220120120502-ravioles-con-salsa-de-tomte.png?aspect_ratio=16:9&quality=90&",
+      "ingredientes": [
+        "Ravioles",
+        "Salchicha",
+        "Verduras"
+      ],
+      "pasos": [
+        "Picar las verduras",
+        "Cocinarlas",
+        "Hacer la salsa",
+        "Hervir ravioles",
+        "Poner la salchicha en la salsa",
+        "Servir en el plato"
+      ]
     }
   ]
 }
