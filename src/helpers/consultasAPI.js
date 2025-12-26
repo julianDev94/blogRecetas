@@ -15,6 +15,18 @@ export const altaReceta = async (receta) => {
   }
 };
 
+export const obtenerRecetas = async () => {
+  try {
+    const respuesta = await fetch(apiRecetas);
+    if (respuesta.status === 200) {
+      const datosRecetas = await respuesta.json();
+      return datosRecetas;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const admin = {
   usuario: "admin",
   contrasenia: "1234Admin",
