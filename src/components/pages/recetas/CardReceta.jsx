@@ -20,10 +20,10 @@ const CardReceta = ({receta}) => {
             <Card.Text>{receta.descripcionBreve}</Card.Text>
             <div className="d-flex">
               <p className="me-3">
-                <i className="bi bi-clock-history"></i> {receta.tiempoPrep}
+                <i className="bi bi-clock-history"></i> {receta.tiempoPrep} min
               </p>
               <p>
-                <i className="bi bi-people"></i> {receta.porciones}
+                <i className="bi bi-people"></i> {receta.porciones} personas
               </p>
             </div>
           </Card.Body>

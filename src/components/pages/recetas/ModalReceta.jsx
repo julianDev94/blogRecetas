@@ -5,6 +5,7 @@ const ModalReceta = ({ mostrarModal, setMostrarModal, receta }) => {
     <Modal
       show={mostrarModal}
       onHide={() => setMostrarModal(false)}
+      size="lg"
       dialogClassName="modal-90w"
       aria-labelledby="example-custom-modal-styling-title"
     >
@@ -26,15 +27,15 @@ const ModalReceta = ({ mostrarModal, setMostrarModal, receta }) => {
         <Row>
           <Col>
             <p>Preparación</p>
-            <p>{receta.tiempoPrep}</p>
+            <p>{receta.tiempoPrep} min</p>
           </Col>
           <Col>
             <p>Cocción</p>
-            <p>{receta.tiempoCoccion}</p>
+            <p>{receta.tiempoCoccion} min</p>
           </Col>
           <Col>
             <p>Porciones</p>
-            <p>{receta.porciones}</p>
+            <p>{receta.porciones} personas</p>
           </Col>
         </Row>
 
@@ -48,11 +49,11 @@ const ModalReceta = ({ mostrarModal, setMostrarModal, receta }) => {
         </div>
         <div>
           <h5>Preparación</h5>
-          <ul>
+          <ol>
             { receta.pasos.map((paso,indice) => (
               <li key={indice}>{paso}</li>
             ))}
-          </ul>
+          </ol>
         </div>
       </Modal.Body>
     </Modal>
