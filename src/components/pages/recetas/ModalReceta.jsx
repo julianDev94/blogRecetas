@@ -1,6 +1,6 @@
 import { Modal, Row, Col } from "react-bootstrap";
 
-const ModalReceta = ({ mostrarModal, setMostrarModal }) => {
+const ModalReceta = ({ mostrarModal, setMostrarModal, receta }) => {
   return (
     <Modal
       show={mostrarModal}
@@ -10,44 +10,48 @@ const ModalReceta = ({ mostrarModal, setMostrarModal }) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="example-custom-modal-styling-title">
-          Titulo receta
+          {receta.titulo}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <div className="mb-3">
           <img
-            src="https://images.pexels.com/photos/691114/pexels-photo-691114.jpeg"
+            src={receta.urlImagen}
             alt="Imagen de la receta"
             className="w-100 rounded"
           />
         </div>
-        <p className="lead">Descripcion breve</p>
+        <p className="lead">{receta.descripcionBreve}</p>
 
         <Row>
           <Col>
             <p>Preparación</p>
-            <p>Tiempo</p>
+            <p>{receta.tiempoPrep}</p>
           </Col>
           <Col>
             <p>Cocción</p>
-            <p>Tiempo</p>
+            <p>{receta.tiempoCoccion}</p>
           </Col>
           <Col>
             <p>Porciones</p>
-            <p>Cantidad</p>
+            <p>{receta.porciones}</p>
           </Col>
         </Row>
 
         <div>
           <h5>Ingredientes</h5>
           <ul>
-            <li>Ingrediente 1</li>
+            {receta?.ingredientes?.map((ingrediente, indice) => (
+              <li key={indice}>{ingrediente}</li>
+            ))}
           </ul>
         </div>
         <div>
           <h5>Preparación</h5>
           <ul>
-            <li>Paso 1</li>
+            { receta.pasos.map((paso,indice) => (
+              <li key={indice}>{paso}</li>
+            ))}
           </ul>
         </div>
       </Modal.Body>

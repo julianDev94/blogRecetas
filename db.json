@@ -30,30 +30,6 @@
       ]
     },
     {
-      "id": "5e48",
-      "titulo": "Mate cocido",
-      "categoria": "Principal",
-      "descripcionBreve": "Mate cocido rico caliente",
-      "tiempoPrep": "5",
-      "tiempoCoccion": "15",
-      "porciones": "2",
-      "urlImagen": "https://images.pexels.com/photos/904616/pexels-photo-904616.jpeg",
-      "ingredientes": "Saco mate",
-      "pasos": "Hacer hervir agua"
-    },
-    {
-      "id": "4e4d",
-      "titulo": "Mate cocido",
-      "categoria": "Principal",
-      "descripcionBreve": "Mate cocido rico caliente",
-      "tiempoPrep": "5",
-      "tiempoCoccion": "15",
-      "porciones": "2",
-      "urlImagen": "https://images.pexels.com/photos/904616/pexels-photo-904616.jpeg",
-      "ingredientes": "Saco mate",
-      "pasos": "Hacer hervir agua"
-    },
-    {
       "id": "6857",
       "titulo": "Napolitana con papas",
       "categoria": "Principal",

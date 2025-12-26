@@ -1,16 +1,9 @@
 import { Col, Container, Row } from "react-bootstrap";
 import CardReceta from "./recetas/CardReceta";
-import { useEffect, useState } from "react";
+import { useRecetas } from "../../hooks/useRecetas";
 
 const Inicio = () => {
-
-const [recetas, setRecetas] = useState([]);
-
-useEffect(()=>{
-
-})
-
-
+  const { recetas } = useRecetas();
 
   return (
     <section className="seccionPricipal">
@@ -21,10 +14,12 @@ useEffect(()=>{
             Categorias
           </span>
         </div>
-        <Row xs={1} md={3} className="g-4">
-          <Col>
-            <CardReceta></CardReceta>
-          </Col>
+        <Row xs={1} md={4} className="g-4">
+          {recetas.map((receta, indice) => (
+            <Col key={indice}>
+              <CardReceta receta={receta} key={receta.id} />
+            </Col>
+          ))}
         </Row>
       </Container>
     </section>
