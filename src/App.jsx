@@ -12,7 +12,6 @@ import { useState } from "react";
 function App() {
 
   const usuarioAdmin = JSON.parse(sessionStorage.getItem("usuarioAdmin")) || "";
-  console.log(usuarioAdmin);
   const [usuarioAdminLogueado, setUsuarioAdminLogueado] = useState(usuarioAdmin);
 
   return (

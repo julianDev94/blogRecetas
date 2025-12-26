@@ -1,14 +1,11 @@
 import { Container } from "react-bootstrap";
 import ItemReceta from "./recetas/ItemReceta";
 import { Link } from "react-router";
-import { useEffect, useState } from "react";
-import { obtenerRecetas } from "../../helpers/consultasAPI";
 import { useRecetas } from "../../hooks/useRecetas";
 const PanelAdministrador = () => {
 
   const {recetas} = useRecetas(); 
   
-
   return (
     <section className="seccionPricipal">
       <Container className="mt-4">
