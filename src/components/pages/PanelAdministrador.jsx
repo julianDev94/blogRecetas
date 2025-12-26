@@ -3,25 +3,12 @@ import ItemReceta from "./recetas/ItemReceta";
 import { Link } from "react-router";
 import { useEffect, useState } from "react";
 import { obtenerRecetas } from "../../helpers/consultasAPI";
+import { useRecetas } from "../../hooks/useRecetas";
 const PanelAdministrador = () => {
-  const [recetas, setRecetas] = useState([]);
 
-  useEffect(() => {
-    obtenerArrayRecetas();
-  }, [recetas]);
+  const {recetas} = useRecetas(); 
+  
 
-  const obtenerArrayRecetas = async () => {
-    try {
-      const recetas = await obtenerRecetas();
-      console.log(recetas);
-      if (recetas.status === 200) {
-        const datosRecetas = await recetas.json();
-        setRecetas(datosRecetas);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <section className="seccionPricipal">
       <Container className="mt-4">
@@ -47,7 +34,7 @@ const PanelAdministrador = () => {
             </thead>
             <tbody>
               {recetas.map((receta) => (
-                <ItemReceta receta={receta} />
+                <ItemReceta receta={receta} key={receta.id}/>
               ))}
             </tbody>
           </table>

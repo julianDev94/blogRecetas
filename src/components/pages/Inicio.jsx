@@ -1,8 +1,17 @@
 import { Col, Container, Row } from "react-bootstrap";
 import CardReceta from "./recetas/CardReceta";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Inicio = () => {
+
+const [recetas, setRecetas] = useState([]);
+
+useEffect(()=>{
+
+})
+
+
+
   return (
     <section className="seccionPricipal">
       <Container className="my-3">
