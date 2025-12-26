@@ -14,7 +14,7 @@ const Inicio = () => {
             Categorias
           </span>
         </div>
-        <Row xs={1} md={4} className="g-4">
+        <Row xs={1} md={2} lg={4} className="g-4">
           {recetas.map((receta, indice) => (
             <Col key={indice}>
               <CardReceta receta={receta} key={receta.id} />
