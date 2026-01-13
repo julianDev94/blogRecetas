@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useParams } from "react-router";
+import { useEffect } from "react";
 import {
   altaReceta,
   leerUnProducto,
@@ -25,25 +26,32 @@ const FormularioReceta = ({ editar, titulo }) => {
 
   useEffect(() => {
     if (editar) {
-      consultarUnProducto();
+      consultarUnaReceta();
     }
-  }, []);
+  }, [editar,id]);
 
-  const consultarUnProducto = async () => {
+  const consultarUnaReceta = async () => {
     const producto = await leerUnProducto(id);
-    setValue("titulo", producto.titulo);
-    setValue("categoria", producto.categoria);
-    setValue("descripcionBreve", producto.descripcionBreve);
-    setValue("tiempoPrep", producto.tiempoPrep);
-    setValue("tiempoCoccion", producto.tiempoCoccion);
-    setValue("porciones", producto.porciones);
-    setValue("urlImagen", producto.urlImagen);
-    producto.ingredientes.map((ingrediente, pos) => {
-      setValue(`ingredientes.${pos}`, ingrediente);
-    });
-    producto.pasos.map((paso, pos) => {
-      setValue(`pasos.${pos}`, paso);
-    });
+
+    setIngredientes(producto.ingredientes);
+    setPasos(producto.pasos);
+    // setValue("titulo", producto.titulo);
+    // setValue("categoria", producto.categoria);
+    // setValue("descripcionBreve", producto.descripcionBreve);
+    // setValue("tiempoPrep", producto.tiempoPrep);
+    // setValue("tiempoCoccion", producto.tiempoCoccion);
+    // setValue("porciones", producto.porciones);
+    // setValue("urlImagen", producto.urlImagen);
+
+    
+    // producto.ingredientes.forEach((ingrediente, pos) => {
+    //   setValue(`ingredientes.${pos}`, ingrediente);
+    // });
+    // producto.pasos.forEach((paso, pos) => {
+    //   setValue(`pasos.${pos}`, paso);
+    // });
+
+    reset({...producto});
   };
 
   const agregarIngrediente = () => {

@@ -16,7 +16,7 @@ const ItemReceta = ({receta}) => {
       <td>{receta.porciones}</td>
       <td>
         <div className="d-flex">
-          <Link to={"/administrador/formulario"} className="btn btn-link">
+          <Link to={"/administrador/modificar/"+ receta.id} className="btn btn-link">
             <i className="bi bi-pencil-square text-primary fs-4"></i>
           </Link>
           <Button variant="link"> 
