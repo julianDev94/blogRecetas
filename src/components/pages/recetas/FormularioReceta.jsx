@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { altaReceta } from "../../../helpers/consultasAPI";
 import Swal from "sweetalert2";
-const FormularioReceta = () => {
+const FormularioReceta = ({ editar, titulo }) => {
   const {
     register,
     handleSubmit,
@@ -13,8 +13,21 @@ const FormularioReceta = () => {
     setValue,
   } = useForm();
 
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const [ingredientes, setIngredientes] = useState([""]);
   const [pasos, setPasos] = useState([""]);
+
+  useEffect(() => {
+    if (editar) {
+      consultarUnProducto();
+    }
+  }, []);
+
+  const consultarUnProducto = async () => {
+    
+  };
 
   const agregarIngrediente = () => {
     setIngredientes([...ingredientes, ""]);
@@ -35,32 +48,35 @@ const FormularioReceta = () => {
   };
 
   const validacionFormulario = async (datos) => {
-    try {
-      const respuesta = await altaReceta(datos);
- 
-      if (respuesta.status === 201) {
-        Swal.fire({
-          title: "Receta creada con exito!",
-          text: `La receta de ${datos.titulo} fue creada`,
-          icon: "success",
-        });
-        reset();
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Ups :(",
-          text: "Ha ocurrido un problema, intentelo nuevamente más tarde!",
-        });
+    if (editar) {
+    } else {
+      try {
+        const respuesta = await altaReceta(datos);
+
+        if (respuesta.status === 201) {
+          Swal.fire({
+            title: "Receta creada con exito!",
+            text: `La receta de ${datos.titulo} fue creada`,
+            icon: "success",
+          });
+          reset();
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Ups :(",
+            text: "Ha ocurrido un problema, intentelo nuevamente más tarde!",
+          });
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
   return (
     <section className="seccionPricipal">
       <Container className="my-4">
-        <h5>Alta de recetas</h5>
+        <h5>{titulo}</h5>
         <Form
           className="bg-white p-4 rounded shadow-lg"
           onSubmit={handleSubmit(validacionFormulario)}
