@@ -34,7 +34,7 @@ export const modificarReceta = async (id, productoAModificar)=>{
       headers:{
         "Content-Type":"application/json"
       },
-      body: JSON.stringify(productoAModificar);
+      body: JSON.stringify(productoAModificar)
     });
     return respuesta;
   } catch (error) {

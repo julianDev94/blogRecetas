@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useParams } from "react-router";
-import { altaReceta } from "../../../helpers/consultasAPI";
+import { altaReceta, leerUnProducto } from "../../../helpers/consultasAPI";
 import Swal from "sweetalert2";
 const FormularioReceta = ({ editar, titulo }) => {
   const {
@@ -26,6 +26,20 @@ const FormularioReceta = ({ editar, titulo }) => {
   }, []);
 
   const consultarUnProducto = async () => {
+    const producto = await leerUnProducto(id);
+    setValue("titulo",producto.titulo);
+    setValue("categoria", producto.categoria);
+    setValue("descripcionBreve", producto.descripcionBreve);
+    setValue("tiempoPrep", producto.tiempoPrep);
+    setValue("tiempoCoccion", producto.tiempoCoccion);
+    setValue("porciones", producto.porciones);
+    setValue("urlImagen", producto.urlImagen);
+    producto.ingredientes.map((ingrediente,pos)=>{
+      setValue(`ingredientes.${pos}`, ingrediente);
+    });
+    producto.pasos.map((paso, pos)=>{
+      setValue(`pasos.${pos}`, paso);
+    });
     
   };
 
