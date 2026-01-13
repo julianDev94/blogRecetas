@@ -42,6 +42,18 @@ export const modificarReceta = async (id, productoAModificar)=>{
   }
 }
 
+export const leerUnProducto = async (id) =>{
+  try {
+    const respuesta = await fetch(apiRecetas + `/${id}`);
+    if(respuesta.status === 200){
+      const productoEncontrado = await respuesta.json();
+      return productoEncontrado;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 const admin = {
   usuario: "admin",
   contrasenia: "1234Admin",
