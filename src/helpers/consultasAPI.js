@@ -27,6 +27,33 @@ export const obtenerRecetas = async () => {
   }
 };
 
+export const modificarReceta = async (id, productoAModificar)=>{
+  try {
+    const respuesta = await fetch(apiRecetas + `/${id}`, {
+      method: "PUT",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify(productoAModificar)
+    });
+    return respuesta;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const leerUnProducto = async (id) =>{
+  try {
+    const respuesta = await fetch(apiRecetas + `/${id}`);
+    if(respuesta.status === 200){
+      const productoEncontrado = await respuesta.json();
+      return productoEncontrado;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 const admin = {
   usuario: "admin",
   contrasenia: "1234Admin",

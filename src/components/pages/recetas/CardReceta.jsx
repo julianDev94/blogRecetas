@@ -28,6 +28,7 @@ const CardReceta = ({receta}) => {
             </div>
           </Card.Body>
         </Card>
+        
       </div>
 
       <ModalReceta

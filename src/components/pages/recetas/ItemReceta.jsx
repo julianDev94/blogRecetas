@@ -6,7 +6,7 @@ const ItemReceta = ({receta}) => {
     <tr>
       <td>
         <div className="d-flex">
-            <img src="https://images.pexels.com/photos/691114/pexels-photo-691114.jpeg" alt="Imagen ilustrativa de la receta" className="img-fila rounded" />
+            <img src={receta.urlImagen} alt="Imagen ilustrativa de la receta" className="img-fila rounded" />
             <div className="ms-3"><p>{receta.titulo}</p>
             <p className="text-body-secondary">{receta.descripcionBreve}</p></div>
         </div>
@@ -16,7 +16,7 @@ const ItemReceta = ({receta}) => {
       <td>{receta.porciones}</td>
       <td>
         <div className="d-flex">
-          <Link to={"/administrador/formulario"} className="btn btn-link">
+          <Link to={"/administrador/modificar/"+ receta.id} className="btn btn-link">
             <i className="bi bi-pencil-square text-primary fs-4"></i>
           </Link>
           <Button variant="link"> 

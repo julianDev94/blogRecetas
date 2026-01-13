@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
-import { altaReceta } from "../../../helpers/consultasAPI";
+import { Link, useNavigate, useParams } from "react-router";
+import { useEffect } from "react";
+import {
+  altaReceta,
+  leerUnProducto,
+  modificarReceta,
+} from "../../../helpers/consultasAPI";
 import Swal from "sweetalert2";
-const FormularioReceta = () => {
+const FormularioReceta = ({ editar, titulo }) => {
   const {
     register,
     handleSubmit,
@@ -13,8 +18,40 @@ const FormularioReceta = () => {
     setValue,
   } = useForm();
 
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const [ingredientes, setIngredientes] = useState([""]);
   const [pasos, setPasos] = useState([""]);
+
+  useEffect(() => {
+    if (editar) {
+      consultarUnaReceta();
+    }
+  }, [editar, id]);
+
+  const consultarUnaReceta = async () => {
+    const producto = await leerUnProducto(id);
+
+    setIngredientes(producto.ingredientes);
+    setPasos(producto.pasos);
+    // setValue("titulo", producto.titulo);
+    // setValue("categoria", producto.categoria);
+    // setValue("descripcionBreve", producto.descripcionBreve);
+    // setValue("tiempoPrep", producto.tiempoPrep);
+    // setValue("tiempoCoccion", producto.tiempoCoccion);
+    // setValue("porciones", producto.porciones);
+    // setValue("urlImagen", producto.urlImagen);
+
+    // producto.ingredientes.forEach((ingrediente, pos) => {
+    //   setValue(`ingredientes.${pos}`, ingrediente);
+    // });
+    // producto.pasos.forEach((paso, pos) => {
+    //   setValue(`pasos.${pos}`, paso);
+    // });
+
+    reset({ ...producto });
+  };
 
   const agregarIngrediente = () => {
     setIngredientes([...ingredientes, ""]);
@@ -35,32 +72,50 @@ const FormularioReceta = () => {
   };
 
   const validacionFormulario = async (datos) => {
-    try {
-      const respuesta = await altaReceta(datos);
- 
-      if (respuesta.status === 201) {
+    if (editar) {
+      const respuesta = await modificarReceta(id, datos);
+      if (respuesta.status === 200) {
         Swal.fire({
-          title: "Receta creada con exito!",
-          text: `La receta de ${datos.titulo} fue creada`,
+          title: "Receta ha sido modificada con exito!",
+          text: `La receta de ${datos.titulo} fue modificada`,
           icon: "success",
         });
-        reset();
+        navigate("/administrador/");
       } else {
         Swal.fire({
+          title: "Ha ocurrido un problema!",
+          text: `La receta de ${datos.titulo} no se pudo modificar! vuelva a intentarlo mas tarde.`,
           icon: "error",
-          title: "Ups :(",
-          text: "Ha ocurrido un problema, intentelo nuevamente más tarde!",
         });
       }
-    } catch (error) {
-      console.log(error);
+    } else {
+      try {
+        const respuesta = await altaReceta(datos);
+
+        if (respuesta.status === 201) {
+          Swal.fire({
+            title: "Receta creada con exito!",
+            text: `La receta de ${datos.titulo} fue creada`,
+            icon: "success",
+          });
+          reset();
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Ups :(",
+            text: "Ha ocurrido un problema, intentelo nuevamente más tarde!",
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
   return (
     <section className="seccionPricipal">
       <Container className="my-4">
-        <h5>Alta de recetas</h5>
+        <h5>{titulo}</h5>
         <Form
           className="bg-white p-4 rounded shadow-lg"
           onSubmit={handleSubmit(validacionFormulario)}
@@ -79,7 +134,7 @@ const FormularioReceta = () => {
                       "El titulo de la receta tiene menos de 4 caracteres",
                   },
                   maxLength: {
-                    value: 20,
+                    value: 50,
                     message: "El titulo de la receta tiene más",
                   },
                 })}
@@ -120,9 +175,9 @@ const FormularioReceta = () => {
                     "La descripcion ingresada tiene menos de 4 caracteres",
                 },
                 maxLength: {
-                  value: 30,
+                  value: 300,
                   message:
-                    "La descripcion ingresada tiene más de 30 caracteres",
+                    "La descripcion ingresada tiene más de 100 caracteres",
                 },
               })}
             />
@@ -218,7 +273,7 @@ const FormularioReceta = () => {
               {errors.urlImagen?.message}
             </Form.Text>
           </Form.Group>
-          <Form.Group controlId="formularioIngredientes">
+          <Form.Group>
             <div className="d-flex mb-2">
               <Form.Label className="me-auto">Ingredientes *</Form.Label>
               <div>
@@ -240,9 +295,9 @@ const FormularioReceta = () => {
                         "La cantidad de caracteres debe ser mayor o igual 3",
                     },
                     maxLength: {
-                      value: 30,
+                      value: 50,
                       message:
-                        "La cantidad de caracteres debe ser menor o igual a 30",
+                        "La cantidad de caracteres debe ser menor o igual a 50",
                     },
                   })}
                 />
@@ -262,7 +317,7 @@ const FormularioReceta = () => {
               </div>
             ))}
           </Form.Group>
-          <Form.Group controlId="formularioPasos" className="mb-3">
+          <Form.Group className="mb-3">
             <div className="d-flex mb-2">
               <Form.Label className="me-auto">Pasos para receta *</Form.Label>
               <div>
