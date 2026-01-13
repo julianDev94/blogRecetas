@@ -28,7 +28,7 @@ const FormularioReceta = ({ editar, titulo }) => {
     if (editar) {
       consultarUnaReceta();
     }
-  }, [editar,id]);
+  }, [editar, id]);
 
   const consultarUnaReceta = async () => {
     const producto = await leerUnProducto(id);
@@ -43,7 +43,6 @@ const FormularioReceta = ({ editar, titulo }) => {
     // setValue("porciones", producto.porciones);
     // setValue("urlImagen", producto.urlImagen);
 
-    
     // producto.ingredientes.forEach((ingrediente, pos) => {
     //   setValue(`ingredientes.${pos}`, ingrediente);
     // });
@@ -51,7 +50,7 @@ const FormularioReceta = ({ editar, titulo }) => {
     //   setValue(`pasos.${pos}`, paso);
     // });
 
-    reset({...producto});
+    reset({ ...producto });
   };
 
   const agregarIngrediente = () => {
@@ -82,7 +81,7 @@ const FormularioReceta = ({ editar, titulo }) => {
           icon: "success",
         });
         navigate("/administrador/");
-      }else{
+      } else {
         Swal.fire({
           title: "Ha ocurrido un problema!",
           text: `La receta de ${datos.titulo} no se pudo modificar! vuelva a intentarlo mas tarde.`,
@@ -274,7 +273,7 @@ const FormularioReceta = ({ editar, titulo }) => {
               {errors.urlImagen?.message}
             </Form.Text>
           </Form.Group>
-          <Form.Group controlId="formularioIngredientes">
+          <Form.Group>
             <div className="d-flex mb-2">
               <Form.Label className="me-auto">Ingredientes *</Form.Label>
               <div>
@@ -318,7 +317,7 @@ const FormularioReceta = ({ editar, titulo }) => {
               </div>
             ))}
           </Form.Group>
-          <Form.Group controlId="formularioPasos" className="mb-3">
+          <Form.Group className="mb-3">
             <div className="d-flex mb-2">
               <Form.Label className="me-auto">Pasos para receta *</Form.Label>
               <div>
