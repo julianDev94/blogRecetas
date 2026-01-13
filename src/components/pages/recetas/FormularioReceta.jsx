@@ -2,7 +2,11 @@ import { useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useParams } from "react-router";
-import { altaReceta, leerUnProducto } from "../../../helpers/consultasAPI";
+import {
+  altaReceta,
+  leerUnProducto,
+  modificarReceta,
+} from "../../../helpers/consultasAPI";
 import Swal from "sweetalert2";
 const FormularioReceta = ({ editar, titulo }) => {
   const {
@@ -27,20 +31,19 @@ const FormularioReceta = ({ editar, titulo }) => {
 
   const consultarUnProducto = async () => {
     const producto = await leerUnProducto(id);
-    setValue("titulo",producto.titulo);
+    setValue("titulo", producto.titulo);
     setValue("categoria", producto.categoria);
     setValue("descripcionBreve", producto.descripcionBreve);
     setValue("tiempoPrep", producto.tiempoPrep);
     setValue("tiempoCoccion", producto.tiempoCoccion);
     setValue("porciones", producto.porciones);
     setValue("urlImagen", producto.urlImagen);
-    producto.ingredientes.map((ingrediente,pos)=>{
+    producto.ingredientes.map((ingrediente, pos) => {
       setValue(`ingredientes.${pos}`, ingrediente);
     });
-    producto.pasos.map((paso, pos)=>{
+    producto.pasos.map((paso, pos) => {
       setValue(`pasos.${pos}`, paso);
     });
-    
   };
 
   const agregarIngrediente = () => {
@@ -63,6 +66,21 @@ const FormularioReceta = ({ editar, titulo }) => {
 
   const validacionFormulario = async (datos) => {
     if (editar) {
+      const respuesta = await modificarReceta(id, datos);
+      if (respuesta.status === 200) {
+        Swal.fire({
+          title: "Receta ha sido modificada con exito!",
+          text: `La receta de ${datos.titulo} fue modificada`,
+          icon: "success",
+        });
+        navigate("/administrador/");
+      }else{
+        Swal.fire({
+          title: "Ha ocurrido un problema!",
+          text: `La receta de ${datos.titulo} no se pudo modificar! vuelva a intentarlo mas tarde.`,
+          icon: "error",
+        });
+      }
     } else {
       try {
         const respuesta = await altaReceta(datos);
