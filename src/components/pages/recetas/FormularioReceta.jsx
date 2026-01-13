@@ -134,7 +134,7 @@ const FormularioReceta = ({ editar, titulo }) => {
                       "El titulo de la receta tiene menos de 4 caracteres",
                   },
                   maxLength: {
-                    value: 20,
+                    value: 50,
                     message: "El titulo de la receta tiene más",
                   },
                 })}
@@ -175,9 +175,9 @@ const FormularioReceta = ({ editar, titulo }) => {
                     "La descripcion ingresada tiene menos de 4 caracteres",
                 },
                 maxLength: {
-                  value: 30,
+                  value: 300,
                   message:
-                    "La descripcion ingresada tiene más de 30 caracteres",
+                    "La descripcion ingresada tiene más de 100 caracteres",
                 },
               })}
             />
@@ -295,9 +295,9 @@ const FormularioReceta = ({ editar, titulo }) => {
                         "La cantidad de caracteres debe ser mayor o igual 3",
                     },
                     maxLength: {
-                      value: 30,
+                      value: 50,
                       message:
-                        "La cantidad de caracteres debe ser menor o igual a 30",
+                        "La cantidad de caracteres debe ser menor o igual a 50",
                     },
                   })}
                 />
