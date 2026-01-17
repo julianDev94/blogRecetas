@@ -27,32 +27,43 @@ export const obtenerRecetas = async () => {
   }
 };
 
-export const modificarReceta = async (id, productoAModificar)=>{
+export const modificarReceta = async (id, productoAModificar) => {
   try {
     const respuesta = await fetch(apiRecetas + `/${id}`, {
       method: "PUT",
-      headers:{
-        "Content-Type":"application/json"
+      headers: {
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(productoAModificar)
+      body: JSON.stringify(productoAModificar),
     });
     return respuesta;
   } catch (error) {
     console.error(error);
   }
-}
+};
 
-export const leerUnProducto = async (id) =>{
+export const leerUnProducto = async (id) => {
   try {
     const respuesta = await fetch(apiRecetas + `/${id}`);
-    if(respuesta.status === 200){
+    if (respuesta.status === 200) {
       const productoEncontrado = await respuesta.json();
       return productoEncontrado;
     }
   } catch (error) {
     console.log(error);
   }
-}
+};
+
+export const eliminarUnProducto = async (id) => {
+  try {
+    const respuesta = await fetch(apiRecetas + `/${id}`, {
+      method: "DELETE",
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const admin = {
   usuario: "admin",
@@ -66,7 +77,7 @@ export const login = (usuarioLogin) => {
   ) {
     sessionStorage.setItem(
       "usuarioAdmin",
-      JSON.stringify(usuarioLogin.usuario)
+      JSON.stringify(usuarioLogin.usuario),
     );
     return true;
   } else {
