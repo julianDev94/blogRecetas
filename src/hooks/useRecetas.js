@@ -14,7 +14,7 @@ export const useRecetas = () => {
 
   useEffect(() => {
     obtenerArrayRecetas();
-  }, []);   
+  }, [recetas]);   
 
 
   return {recetas};

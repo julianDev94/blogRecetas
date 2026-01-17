@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { useRecetas } from "../../hooks/useRecetas";
 const PanelAdministrador = () => {
 
-  const {recetas} = useRecetas(); 
+  const {recetas} = useRecetas();
   
   return (
     <section className="seccionPricipal">
