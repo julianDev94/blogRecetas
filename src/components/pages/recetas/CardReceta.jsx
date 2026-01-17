@@ -5,12 +5,13 @@ const CardReceta = ({receta}) => {
   const [mostrarModal, setMostrarModal] = useState(false);
   return (
     <>
-      <div onClick={() => setMostrarModal(true)}>
-        <Card className="cardTransicion">
+      <div onClick={() => setMostrarModal(true)} className="d-flex h-100">
+        <Card className="cardTransicion h-100 w-100">
           <Card.Img
             variant="top"
             src={`${receta.urlImagen}`}
             alt="Imagen de la receta no disponible"
+            className="cardImagenReceta"
           />
           <Card.Body>
             <span className="bg-primary rounded px-2 py-1 text-white">

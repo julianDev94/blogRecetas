@@ -19,7 +19,7 @@ const ModalReceta = ({ mostrarModal, setMostrarModal, receta }) => {
           <img
             src={receta.urlImagen}
             alt="Imagen de la receta"
-            className="w-100 rounded"
+            className="w-100 rounded modalImagen"
           />
         </div>
         <p className="lead">{receta.descripcionBreve}</p>

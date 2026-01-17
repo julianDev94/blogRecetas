@@ -1,7 +1,7 @@
 
 const Footer = () => {
     return (
-        <footer className="py-3 text-dark text-center fw-bold">
+        <footer className="py-3 text-dark text-center fw-bold shadow-sm">
             <p>Todos los derechos reservados &copy;</p>
             <p>By Julian Aballay 💻</p>
         </footer>
