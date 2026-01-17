@@ -99,6 +99,7 @@ const FormularioReceta = ({ editar, titulo }) => {
             icon: "success",
           });
           reset();
+          navigate('/administrador');
         } else {
           Swal.fire({
             icon: "error",
