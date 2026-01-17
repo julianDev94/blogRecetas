@@ -4,27 +4,32 @@ import Menu from "./components/common/Menu";
 import Footer from "./components/common/Footer";
 import Login from "./components/pages/Login";
 import Inicio from "./components/pages/Inicio";
-import PanelAdministrador from "./components/pages/PanelAdministrador";
-import FormularioReceta from "./components/pages/recetas/FormularioReceta";
 import { BrowserRouter, Routes, Route } from "react-router";
 import "./App.css";
 import RutasAdmin from "./components/routes/RutasAdmin";
 import RutasProtegidas from "./components/routes/RutasProtegidas";
+import { useState } from "react";
 function App() {
+
+  const usuarioAdmin = JSON.parse(sessionStorage.getItem("usuarioAdmin")) || "";
+  const [usuarioAdminLogueado, setUsuarioAdminLogueado] = useState(usuarioAdmin);
+
   return (
     <>
       <BrowserRouter>
-        <Menu></Menu>
+        <Menu usuarioAdminLogueado={usuarioAdminLogueado} setUsuarioAdminLogueado={setUsuarioAdminLogueado} />
 
         <Routes>
           <Route path="/" exac element={<Inicio></Inicio>} />
-          <Route path="/login" exac element={<Login></Login>} />
+          <Route path="/login" exac element={<Login setUsuarioAdminLogueado={setUsuarioAdminLogueado}></Login>} />
           <Route
             path="/administrador/*"
             exac
-            element={<RutasProtegidas>
-              <RutasAdmin></RutasAdmin>
-            </RutasProtegidas>}
+            element={
+              <RutasProtegidas>
+                <RutasAdmin></RutasAdmin>
+              </RutasProtegidas>
+            }
           />
         </Routes>
         <Footer></Footer>

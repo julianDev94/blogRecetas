@@ -1,26 +1,63 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router";
-const ItemReceta = () => {
+import { eliminarUnProducto } from "../../../helpers/consultasAPI";
+import Swal from "sweetalert2";
+const ItemReceta = ({ receta }) => {
+  const eliminarReceta = () => {
+    Swal.fire({
+      title: "Esta seguro de eliminar la receta?",
+      text: "Si lleva a cabo la acción, luego es irreversible..",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#15ad36",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const respuesta = await eliminarUnProducto(receta.id);
+        if (respuesta.status === 200) {
+          Swal.fire({
+            title: "Receta borrada exitosamente!",
+            text: `La receta de ${receta.titulo}`,
+            icon: "success",
+          });
+        }
+      }
+    });
+  };
+
   return (
     <tr>
       <td>
         <div className="d-flex">
-            <img src="https://images.pexels.com/photos/691114/pexels-photo-691114.jpeg" alt="" className="img-fila rounded" />
-            <div className="ms-3"><p>Nombre receta</p>
-            <p className="text-body-secondary">Descripcion breve</p></div>
+          <img
+            src={receta.urlImagen}
+            alt="Imagen ilustrativa de la receta"
+            className="img-fila rounded"
+          />
+          <div className="ms-3">
+            <p>{receta.titulo}</p>
+            <p className="text-body-secondary">{receta.descripcionBreve}</p>
+          </div>
         </div>
       </td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>{receta.categoria}</td>
+      <td>
+        {receta.tiempoPrep} + {receta.tiempoCoccion}
+      </td>
+      <td>{receta.porciones}</td>
       <td>
         <div className="d-flex">
-          <Link to={"/administrador/formulario"} href="">
-            <i className="bi bi-pencil-square text-primary fs-4 me-3"></i>
+          <Link
+            to={"/administrador/modificar/" + receta.id}
+            className="btn btn-link"
+          >
+            <i className="bi bi-pencil-square text-primary fs-4"></i>
           </Link>
-          <a className="btn" type="button"> 
+          <Button variant="link" onClick={eliminarReceta}>
             <i className="bi bi-trash3 text-danger fs-4"></i>
-          </a>
+          </Button>
         </div>
       </td>
     </tr>

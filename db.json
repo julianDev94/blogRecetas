@@ -1,0 +1,25 @@
+{
+  "recetas": [
+    {
+      "id": "6857",
+      "titulo": "Napolitana con papa",
+      "categoria": "Principal",
+      "descripcionBreve": "Napolitana con papas fritas",
+      "tiempoPrep": "60",
+      "tiempoCoccion": "20",
+      "porciones": "2",
+      "urlImagen": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg",
+      "ingredientes": [
+        "Carne",
+        "queso",
+        "papas",
+        "Salsa"
+      ],
+      "pasos": [
+        "preparar la milanesa",
+        "fritar la misma",
+        "pelar las papas y luego fritarlas"
+      ]
+    }
+  ]
+}

@@ -12,13 +12,13 @@ const RutasAdmin = () => {
       <Route
         path="/crear"
         exac
-        element={<FormularioReceta></FormularioReceta>}
+        element={<FormularioReceta editar={false} titulo={"Crear receta"}></FormularioReceta>}
       />
       
       <Route
-        path="/modificar"
+        path="/modificar/:id"
         exac
-        element={<FormularioReceta></FormularioReceta>}
+        element={<FormularioReceta editar={true} titulo={"Modificar receta"}></FormularioReceta>}
       />
     </Routes>
   );

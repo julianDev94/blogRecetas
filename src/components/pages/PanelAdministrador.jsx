@@ -1,17 +1,24 @@
 import { Container } from "react-bootstrap";
 import ItemReceta from "./recetas/ItemReceta";
 import { Link } from "react-router";
+import { useRecetas } from "../../hooks/useRecetas";
 const PanelAdministrador = () => {
+
+  const {recetas} = useRecetas();
+  
   return (
     <section className="seccionPricipal">
       <Container className="mt-4">
         <div className="d-flex justify-content-between">
           <h2>Administrar recetas</h2>
-          <Link to={"/administrador/crear"} className=" btn btn-primary text-white">
+          <Link
+            to={"/administrador/crear"}
+            className=" btn btn-primary text-white"
+          >
             + Nueva Receta
           </Link>
         </div>
-        <article className="my-4 table-responsive">
+        <article className="my-4 table-responsive rounded shadow-lg">
           <table className="table">
             <thead>
               <tr>
@@ -23,7 +30,9 @@ const PanelAdministrador = () => {
               </tr>
             </thead>
             <tbody>
-              <ItemReceta />
+              {recetas.map((receta) => (
+                <ItemReceta receta={receta} key={receta.id}/>
+              ))}
             </tbody>
           </table>
         </article>

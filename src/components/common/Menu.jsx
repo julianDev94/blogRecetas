@@ -1,7 +1,13 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router";
 
-const Menu = () => {
+const Menu = ({ usuarioAdminLogueado, setUsuarioAdminLogueado }) => {
+
+  const cerrarSesion = () => {
+    sessionStorage.removeItem("usuarioAdmin");
+    setUsuarioAdminLogueado("");
+  };
+
   return (
     <Navbar expand="lg" data-bs-theme="light">
       <Container>
@@ -19,16 +25,22 @@ const Menu = () => {
             >
               Ver Recetas
             </NavLink>
-            <NavLink
-              to="/administrador"
-              end
-              className="buttonMenu nav-link rounded text-white text-center ms-3"
-            >
-              Panel de Administrador
-            </NavLink>
-            <NavLink to="/login" end className="ms-3 nav-link">
-              <i className="bi bi-arrow-bar-right"></i> Iniciar Sesión
-            </NavLink>
+            {usuarioAdminLogueado !== "" ? (
+              <>
+                <NavLink
+                  to="/administrador"
+                  end
+                  className="buttonMenu nav-link rounded text-white text-center ms-3"
+                >
+                  Administrar
+                </NavLink>
+                <NavLink to={"/"} end onClick={cerrarSesion} className="nav-link ms-3"> <i className="bi bi-box-arrow-left"></i> Logout </NavLink>
+              </>
+            ) : (
+              <NavLink to="/login" end className="ms-3 nav-link">
+                <i className="bi bi-arrow-bar-right"></i> Iniciar Sesión
+              </NavLink>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
