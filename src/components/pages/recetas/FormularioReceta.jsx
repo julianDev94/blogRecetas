@@ -31,10 +31,10 @@ const FormularioReceta = ({ editar, titulo }) => {
   }, [editar, id]);
 
   const consultarUnaReceta = async () => {
-    const producto = await leerUnProducto(id);
+    const receta = await leerUnProducto(id);
 
-    setIngredientes(producto.ingredientes);
-    setPasos(producto.pasos);
+    setIngredientes(receta.ingredientes);
+    setPasos(receta.pasos);
     // setValue("titulo", producto.titulo);
     // setValue("categoria", producto.categoria);
     // setValue("descripcionBreve", producto.descripcionBreve);
@@ -50,7 +50,7 @@ const FormularioReceta = ({ editar, titulo }) => {
     //   setValue(`pasos.${pos}`, paso);
     // });
 
-    reset({ ...producto });
+    reset({ ...receta });
   };
 
   const agregarIngrediente = () => {
