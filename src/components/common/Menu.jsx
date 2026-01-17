@@ -9,7 +9,7 @@ const Menu = ({ usuarioAdminLogueado, setUsuarioAdminLogueado }) => {
   };
 
   return (
-    <Navbar expand="lg" data-bs-theme="light">
+    <Navbar expand="lg" data-bs-theme="light" className="shadow-sm">
       <Container>
         <Navbar.Brand as={Link} to={"/"}>
           <i className="bi bi-fork-knife fs-3 colorEstilo"></i> Mi blog de
