@@ -43,6 +43,11 @@
   object-fit: cover;
 }
 
+.modalImagen{
+  height: 400px;
+  object-fit: cover;
+}
+
 
 .table th{
   padding: 15px 20px;
