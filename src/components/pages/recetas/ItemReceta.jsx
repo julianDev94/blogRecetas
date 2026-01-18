@@ -34,7 +34,7 @@ const ItemReceta = ({ receta }) => {
           <img
             src={receta.urlImagen}
             alt="Imagen ilustrativa de la receta"
-            className="img-fila rounded"
+            className="img-fila rounded object-fit-cover"
           />
           <div className="ms-3">
             <p>{receta.titulo}</p>
