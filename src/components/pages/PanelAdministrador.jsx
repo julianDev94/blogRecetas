@@ -31,7 +31,7 @@ const PanelAdministrador = () => {
             </thead>
             <tbody>
               {recetas.map((receta) => (
-                <ItemReceta receta={receta} key={receta.id}/>
+                <ItemReceta receta={receta} key={receta._id}/>
               ))}
             </tbody>
           </table>

@@ -17,7 +17,7 @@ const Inicio = () => {
         <Row xs={1} md={2} lg={4} className="g-4">
           {recetas.map((receta, indice) => (
             <Col key={indice}>
-              <CardReceta receta={receta} key={receta.id} />
+              <CardReceta receta={receta} key={receta._id} />
             </Col>
           ))}
         </Row>
