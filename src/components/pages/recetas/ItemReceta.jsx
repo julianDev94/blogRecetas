@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router";
 import { eliminarUnProducto } from "../../../helpers/consultasAPI";
 import Swal from "sweetalert2";
-const ItemReceta = ({ receta }) => {
+const ItemReceta = ({ receta, obtenerArrayRecetas }) => {
   const eliminarReceta = () => {
     Swal.fire({
       title: "Esta seguro de eliminar la receta?",
@@ -22,7 +22,9 @@ const ItemReceta = ({ receta }) => {
             text: `La receta de ${receta.titulo}`,
             icon: "success",
           });
+
         }
+        obtenerArrayRecetas();
       }
     });
   };

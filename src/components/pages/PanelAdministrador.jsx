@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { useRecetas } from "../../hooks/useRecetas";
 const PanelAdministrador = () => {
 
-  const {recetas} = useRecetas();
+  const {recetas, obtenerArrayRecetas} = useRecetas();
   
   return (
     <section className="seccionPricipal">
@@ -31,7 +31,7 @@ const PanelAdministrador = () => {
             </thead>
             <tbody>
               {recetas.map((receta) => (
-                <ItemReceta receta={receta} key={receta._id}/>
+                <ItemReceta receta={receta} key={receta._id} obtenerArrayRecetas={obtenerArrayRecetas}/>
               ))}
             </tbody>
           </table>

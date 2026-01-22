@@ -14,8 +14,8 @@ export const useRecetas = () => {
 
   useEffect(() => {
     obtenerArrayRecetas();
-  }, [recetas]);   
+  }, []);   
 
 
-  return {recetas};
+  return {recetas, obtenerArrayRecetas};
 };
