@@ -15,7 +15,7 @@ const ItemReceta = ({ receta }) => {
       cancelButtonText: "Cancelar",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const respuesta = await eliminarUnProducto(receta.id);
+        const respuesta = await eliminarUnProducto(receta._id);
         if (respuesta.status === 200) {
           Swal.fire({
             title: "Receta borrada exitosamente!",
@@ -50,7 +50,7 @@ const ItemReceta = ({ receta }) => {
       <td>
         <div className="d-flex">
           <Link
-            to={"/administrador/modificar/" + receta.id}
+            to={"/administrador/modificar/" + receta._id}
             className="btn btn-link"
           >
             <i className="bi bi-pencil-square text-primary fs-4"></i>
