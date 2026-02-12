@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { login } from "../../helpers/consultasAPI";
 import Swal from "sweetalert2";
-const Login = ({setUsuarioAdminLogueado}) => {
+const Login = ({ setUsuarioAdminLogueado }) => {
   const {
     register,
     handleSubmit,
@@ -13,17 +13,19 @@ const Login = ({setUsuarioAdminLogueado}) => {
 
   const navegacionAdministrar = useNavigate();
 
-  const validacionLogin = (datos) => {
-    if (login(datos)) {
+  const validacionLogin = async (datos) => {
+    const usuarioLogueado = await login(datos);
+    console.log(usuarioLogueado);
+    if (usuarioLogueado.status === 200) {
       Swal.fire({
         title: "Usuario logueado exitosamente!",
         text: `Bienvenido ${datos.usuario}!`,
         icon: "success",
       });
-      navegacionAdministrar("/administrador/");
+      sessionStorage.setItem("usuarioAdmin",JSON.stringify(datos.usuario));
+      navegacionAdministrar("/administrador");
       setUsuarioAdminLogueado(datos.usuario);
-
-    }else{
+    } else {
       Swal.fire({
         title: "Upss, ha ocurrido un error!",
         text: `El ${datos.usuario} no esta registrado!`,
@@ -32,7 +34,6 @@ const Login = ({setUsuarioAdminLogueado}) => {
     }
 
     reset();
-
   };
 
   return (

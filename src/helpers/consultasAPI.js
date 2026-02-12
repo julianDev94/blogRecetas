@@ -1,4 +1,5 @@
 const apiRecetas = import.meta.env.VITE_API_RECETAS;
+const apiUsuarios = import.meta.env.VITE_API_USUARIOS;
 
 export const altaReceta = async (receta) => {
   try {
@@ -70,17 +71,33 @@ const admin = {
   contrasenia: "1234Admin",
 };
 
-export const login = (usuarioLogin) => {
-  if (
-    usuarioLogin.usuario === admin.usuario &&
-    usuarioLogin.contrasenia === admin.contrasenia
-  ) {
-    sessionStorage.setItem(
-      "usuarioAdmin",
-      JSON.stringify(usuarioLogin.usuario),
-    );
-    return true;
-  } else {
-    return false;
+export const login = async (usuarioLogin) => {
+
+  try {
+    const usuarioLogueado = await fetch(apiUsuarios, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(usuarioLogin)
+  });
+  console.log(usuarioLogueado);
+  return usuarioLogueado;
+  
+  } catch (error) {
+    console.log(error);
   }
+  
+  // if (
+  //   usuarioLogin.usuario === admin.usuario &&
+  //   usuarioLogin.contrasenia === admin.contrasenia
+  // ) {
+  //   sessionStorage.setItem(
+  //     "usuarioAdmin",
+  //     JSON.stringify(usuarioLogin.usuario),
+  //   );
+  //   return true;
+  // } else {
+  //   return false;
+  // }
 };
