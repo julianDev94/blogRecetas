@@ -15,7 +15,6 @@ const Login = ({ setUsuarioAdminLogueado }) => {
 
   const validacionLogin = async (datos) => {
     const usuarioLogueado = await login(datos);
-    console.log(usuarioLogueado);
     if (usuarioLogueado.status === 200) {
       Swal.fire({
         title: "Usuario logueado exitosamente!",
