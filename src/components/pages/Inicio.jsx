@@ -1,9 +1,8 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import CardReceta from "./recetas/CardReceta";
 import { useRecetas } from "../../hooks/useRecetas";
-
 const Inicio = () => {
-  const { recetas } = useRecetas();
+  const { recetas, loading } = useRecetas();
 
   return (
     <section className="seccionPricipal">
@@ -15,11 +14,18 @@ const Inicio = () => {
           </span>
         </div>
         <Row xs={1} md={2} lg={4} className="g-4">
-          {recetas.map((receta, indice) => (
-            <Col key={indice}>
-              <CardReceta receta={receta} key={receta._id} />
-            </Col>
-          ))}
+          {loading ? (
+            <div className="d-flex flex-column justify-content-center align-items-center w-100">
+              <Spinner animation="border" variant="danger" />
+              <span className="fw-bold">Cargando recetas...</span>
+            </div>
+          ) : (
+            recetas.map((receta, indice) => (
+              <Col key={indice}>
+                <CardReceta receta={receta} key={receta._id} />
+              </Col>
+            ))
+          )}
         </Row>
       </Container>
     </section>
