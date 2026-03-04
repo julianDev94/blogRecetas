@@ -1,25 +1,12 @@
 import { obtenerRecetas } from "../helpers/consultasAPI";
-import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 export const useRecetas = () => {
-  const [recetas, setRecetas] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const obtenerArrayRecetas = async () => {
-    try {
+  const { isPending, isError, data: recetas = [] } = useQuery({
+    queryKey: ["recetas"],
+    queryFn: obtenerRecetas,
+    staleTime: 1000 * 60 * 5,
+  });
 
-      const recetas = await obtenerRecetas();
-      setRecetas(recetas);
-    } catch (error) {
-      console.log(error);
-    } finally{
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    obtenerArrayRecetas();
-  }, []);   
-
-
-  return {recetas, obtenerArrayRecetas, loading};
+  return { isPending, recetas , isError };
 };
